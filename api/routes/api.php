@@ -13,13 +13,16 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-//Route::get('/getConfig', 'ConfigController@index');
-//Route::get('/getConfig', function () {
-//    $config = DB::table('config')->get();
-////    $config = App\Config::all();
-//    return $config;
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
 //});
+
+// config
+Route::get('/configs', 'ConfigsController@index');
+
+// categories
+Route::get('/categories', 'CategoriesController@getAllCategories');
+
+// products
+Route::get('/products', 'ProductsController@getAllProducts');
+Route::get('/products/{id}', 'ProductsController@getProductById');
