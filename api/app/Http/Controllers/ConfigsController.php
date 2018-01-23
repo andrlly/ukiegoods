@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Config;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class ConfigsController extends Controller
 {
+
     public function index(){
         return Config::all();
     }
@@ -15,11 +17,15 @@ class ConfigsController extends Controller
         $config = Config::find(1);
 
         $config['body'] = $request->body;
-        $config['banner'] = $request->banner;
-
+        if ($request->image) {
+            Image::make($value = $request->image['value'])->resize(500, 500)->save(public_path('/uploads/conf.jpg'));
+        } else $request->image = '';
 
         $config->save();
 
-        return ['success' => true];
+        $updated_at = $config['updated_at'];
+
+
+        return ['success' => true, 'updated_at' => $updated_at];
     }
 }

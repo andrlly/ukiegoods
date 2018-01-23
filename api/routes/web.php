@@ -23,26 +23,31 @@ Route::get('/', function () {
     Route::get('/configs', 'ConfigsController@index');
 
     // body, banner
-    Route::put('/config/edit/', 'ConfigsController@editConfig');
+    Route::post('/configs/edit', 'ConfigsController@editConfig');
 
     // categories
     Route::get('/categories', 'CategoriesController@getAllCategories');
 
+    Route::get('/categories', 'CategoriesController@getAllCategories');
     Route::post('/categories/add', 'CategoriesController@addCategory');
-    Route::put('/categories/edit/{id}', 'CategoriesController@addCategory');
+    Route::post('/categories/edit/{id}', 'CategoriesController@editCategory');
     Route::get('/categories/delete/{id}', 'CategoriesController@deleteCategory');
 
     // products
     Route::get('/products', 'ProductsController@getAllProducts');
     Route::get('/products/{id}', 'ProductsController@getProductById');
+    Route::post('/productsArr', 'ProductsController@getProductByIds');
 
     Route::post('/product/add', 'ProductsController@addProduct');
-    Route::put('/product/edit/{id}', 'ProductsController@editProduct');
+    Route::post('/product/edit/{id}', 'ProductsController@editProduct');
     Route::get('/product/delete/{id}', 'ProductsController@deleteProduct');
 
     // user
     Route::post('/user/auth', 'AuthController@authenticate');
-    Route::post('/user/register', 'AuthController@register');
+    Route::post('/user/registration', 'AuthController@registration');
     Route::get('/user/logout', 'AuthController@logout');
+    // attemptAuth from www
+    Route::post('/user/getUser', 'AuthController@getUserByEmail');
+
 
 //});

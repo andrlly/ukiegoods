@@ -18,7 +18,7 @@ class CategoriesController extends Controller
 
         $category->save();
 
-        return ['success' => true];
+        return ['success' => true, 'id' => $category['id']];
     }
 
     public function editCategory(Request $request, $id) {

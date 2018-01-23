@@ -16,7 +16,6 @@ class CreateConfigsTable extends Migration
         Schema::create('configs', function (Blueprint $table) {
             $table->increments('id');
             $table->text('body');
-            $table->string('banner');
             $table->timestamps();
         });
     }

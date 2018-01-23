@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    public function getUserByEmail(Request $request) {
+        return User::where('email', '=', $request->email)->first();
+    }
+
     public function authenticate(Request $request)
     {
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
@@ -21,7 +25,7 @@ class AuthController extends Controller
         return ['success' => true];
     }
 
-    public function register(Request $request) {
+    public function registration(Request $request) {
 
         $user = new User();
 
@@ -32,7 +36,8 @@ class AuthController extends Controller
             return ['error' => true];
         }
         $user['password'] = bcrypt($request->password);
-        return ['user_id' => Auth::id()];
+        $user->save();
+        return ['user_id' => $user['id']];
     }
 
 }
