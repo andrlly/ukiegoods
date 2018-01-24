@@ -56,7 +56,7 @@ Route::get('/', function () {
     Route::post('/orderproduct/add', 'OrderProductsController@addOrderProduct');
 
     //order users
-//    Route::get('/orderuser/add', 'OrderUsersController@addOrderUser');
+    Route::post('/orderuser/add', 'OrderUsersController@addOrderUser');
     Route::get('/orders', 'OrderUsersController@getAllUsers');
 
 //});
