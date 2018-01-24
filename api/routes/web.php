@@ -49,5 +49,30 @@ Route::get('/', function () {
     // attemptAuth from www
     Route::post('/user/getUser', 'AuthController@getUserByEmail');
 
+    // order products
+//    Route::get('/orders', 'OrderProductsController@getOrders');
+    Route::get('/orders/{id}', 'OrderProductsController@getOrderByid');
+
+    Route::post('/orderproduct/add', 'OrderProductsController@addOrderProduct');
+
+    //order users
+//    Route::get('/orderuser/add', 'OrderUsersController@addOrderUser');
+    Route::get('/orders', 'OrderUsersController@getAllUsers');
 
 //});
+
+
+
+/*
+
+t order_users
+t order_products
+t products
+
+В t order_products будуть 2 поля з foreign keys:
+user_order_id
+product_id
+
+моделі відношення one to one, s one to many, залежить що саме витягати
+ *
+ */
