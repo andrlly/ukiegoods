@@ -48,31 +48,31 @@ Route::get('/', function () {
     Route::get('/user/logout', 'AuthController@logout');
     // attemptAuth from www
     Route::post('/user/getUser', 'AuthController@getUserByEmail');
+    Route::get('/user/{id}', 'AuthController@getUserById');
 
     // order products
-//    Route::get('/orders', 'OrderProductsController@getOrders');
-    Route::get('/orders/{id}', 'OrderProductsController@getOrderByid');
+    Route::get('/orders', 'OrdersController@getOrders');
+    Route::get('/orders/{id}', 'OrdersController@getOrderByid');
 
-    Route::post('/orderproduct/add', 'OrderProductsController@addOrderProduct');
+    Route::post('/order/add', 'OrdersController@addOrder');
 
-    //order users
-    Route::post('/orderuser/add', 'OrderUsersController@addOrderUser');
-    Route::get('/orders', 'OrderUsersController@getAllUsers');
 
 //});
 
 
 
 /*
-
-t order_users
-t order_products
+ *
+t users
 t products
+t orders
 
-В t order_products будуть 2 поля з foreign keys:
-user_order_id
+В t orders будуть 2 поля з foreign keys:
+user_id
 product_id
 
-моделі відношення one to one, s one to many, залежить що саме витягати
+Тоді робиш в моделі відношення one to one, s one to many, залежить що саме витягати
+
+
  *
  */

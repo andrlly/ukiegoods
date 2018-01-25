@@ -10,8 +10,8 @@ class Product extends Model
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
-    public function orderProduct()
+    public function order()
     {
-        return $this->hasOne(OrderProduct::class,'product_id');
+        return $this->hasOne(Order::class,'product_id');
     }
 }

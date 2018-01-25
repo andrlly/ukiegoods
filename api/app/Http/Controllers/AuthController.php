@@ -12,6 +12,11 @@ class AuthController extends Controller
         return User::where('email', '=', $request->email)->first();
     }
 
+    public function getUserById($id) {
+        $user = User::find($id);
+        return ['success' => true, 'user_id' => $user['id']];
+    }
+
     public function authenticate(Request $request)
     {
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
