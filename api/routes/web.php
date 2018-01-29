@@ -50,7 +50,10 @@ Route::get('/', function () {
     Route::post('/user/getUser', 'AuthController@getUserByEmail');
     Route::get('/user/{id}', 'AuthController@getUserById');
 
-    // order products
+
+
+    Route::get('/order/{id}', 'OrdersController@order');
+
     Route::get('/orders', 'OrdersController@getOrders');
     Route::get('/orders/{id}', 'OrdersController@getOrderByid');
 

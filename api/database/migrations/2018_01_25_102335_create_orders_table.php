@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->integer('quantity');
             $table->float('price');
             $table->integer('user_id');
-            $table->text('products');
+            $table->integer('product_id');
             $table->timestamps();
         });
     }

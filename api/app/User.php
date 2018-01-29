@@ -8,8 +8,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
 
-    public function order() {
-        return $this->hasOne(Order::class, 'user_id');
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function order()
+    {
+        return $this->hasMany(Order::class, 'user_id', 'id');
     }
 
     use Notifiable;

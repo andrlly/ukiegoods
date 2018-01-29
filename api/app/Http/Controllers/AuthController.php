@@ -14,7 +14,7 @@ class AuthController extends Controller
 
     public function getUserById($id) {
         $user = User::find($id);
-        return ['success' => true, 'user_id' => $user['id']];
+        return ['success' => true, 'user' => $user];
     }
 
     public function authenticate(Request $request)
