@@ -9,29 +9,41 @@ use Illuminate\Http\Request;
 class OrdersController extends Controller
 {
 
-    public function order(Order $order, $id)
+    public function getOrders()
     {
-        $data = $order->with('products')->find($id);
-        return $data;
+        return Order::with('user', 'products')->get();
+    }
+
+    public function getOrder(Order $order, $id)
+    {
+        return Order::with('user', 'products')->find($id);
     }
 
 
 
-//    public function addOrder(Request $request) {
-//        $order = new Order();
+    public function addOrder(Request $request) {
+//        $orders = [];
+//        foreach ($request->data as $product) {
+//            $orders = [
+//                'user_id' => $request->user_id,
+//                'product_id' => $product['id'],
+//                'price' => $product['price'],
+//                'quantity' => $product['count']
 //
-//        $prds = [];
-//        $products = json_decode($request->products, true);
-//        foreach ($products as $product) {
-//             array_push($prds, $product['id']);
+//            ];
+//
+//            Order::insert($orders);
 //        }
-//        $order['products'] = json_encode($prds);
-//        $order['user_id'] = $request->user_id;
-//        $order['price'] = 7000;
-//        $order['quantity'] = 3;
-////
-//        $order->save();
-//
-//        return ['success' => true, 'product' => $prds];
-//    }
+
+        foreach ($request->data as $product) {
+            $order = new Order();
+            $order['user_id'] = $request->user_id;
+            $order['product_id'] = $product['id'];
+            $order['price'] = $product['price'];
+            $order['quantity'] = $product['count'];
+            $order->save();
+        }
+
+        return ['success' => true];
+    }
 }

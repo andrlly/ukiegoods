@@ -52,7 +52,7 @@ Route::get('/', function () {
 
 
 
-    Route::get('/order/{id}', 'OrdersController@order');
+    Route::get('/order/{id}', 'OrdersController@getOrder');
 
     Route::get('/orders', 'OrdersController@getOrders');
     Route::get('/orders/{id}', 'OrdersController@getOrderByid');
